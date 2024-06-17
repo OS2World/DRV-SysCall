@@ -1,0 +1,43 @@
+;*****************************************************************************;
+;*                                                                           *;
+;* COPYRIGHT    Copyright (C) 2017 Lars Erdmann                              *;
+;*                                                                           *;
+;*    The following OS/2 source code is provided to you solely for           *;
+;*    the purpose of assisting you in your development of OS/2 device        *;
+;*    drivers. This Copyright statement may not be removed.                  *;
+;*    All Rights Reserved                                                    *;
+;*                                                                           *;
+;*****************************************************************************;
+MODNAME       = SYSCALL.SYS
+MAJOR         = 0xA
+MAXDATALENGTH = 512
+
+TRACE MINOR=0x0001
+   TP=@STATIC,
+   DESC="SYSCALL.SYS: MSR regs",
+   FMT="IA32_SYSENTER_ESP: %D%D",
+   FMT="IA32_SYSENTER_EIP: %D%D",
+   FMT="IA32_SYSENTER_CS:  %D%D"
+
+TRACE MINOR=0x0002
+   TP=@STATIC,
+   DESC="SYSCALL.SYS: LAPIC phys addr",
+   FMT="physAddr:      %D"
+
+TRACE MINOR=0x0003
+   TP=@STATIC,
+   DESC="SYSCALL.SYS: IDT descriptor of replaced IDT descriptor for IPI generation",
+   FMT="low DWORD:     %D",
+   FMT="high DWORD:    %D"
+
+TRACE MINOR=0x0004
+   TP=@STATIC,
+   DESC="SYSCALL.SYS: processor Manufacturer",
+   FMT="%U"
+
+TRACE MINOR=0x0005
+   TP=@STATIC,
+   DESC="SYSCALL.SYS: processor family/model",
+   FMT="EAX (for EAX=1):%D"
+   FMT="DispFamily:     %B",
+   FMT="Model:          %B"
